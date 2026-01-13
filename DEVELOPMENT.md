@@ -61,6 +61,63 @@
    - 输入 "Extensions: Install from VSIX..."
    - 选择生成的 `.vsix` 文件
 
+## 方法三：发布到 VS Code 扩展商店
+
+如果你想将插件发布到 VS Code 扩展市场：
+
+### 准备工作
+
+1. **创建发布者账号**
+   - 访问：https://marketplace.visualstudio.com/manage/publishers
+   - 使用 Microsoft 账号登录
+   - 创建发布者（Publisher），名称将作为 `package.json` 中的 `publisher` 字段
+
+2. **生成 Personal Access Token (PAT)**
+   - 访问：https://dev.azure.com
+   - 点击右上角用户图标 → Personal access tokens
+   - 创建新 Token：
+     - Name: 例如 "VS Code Extension Publishing"
+     - Organization: 选择 "All accessible organizations"
+     - Expiration: 设置过期时间
+     - Scopes: 勾选 "Marketplace (Publish)"
+
+3. **确保 package.json 配置完整**
+   - `publisher`: 发布者名称（必需）
+   - `license`: 许可证（必需）
+   - `repository`: 代码仓库地址（推荐）
+   - `icon`: 图标文件路径（推荐，128x128 PNG）
+
+### 发布步骤
+
+1. **登录发布者账号**
+   ```bash
+   vsce login <你的发布者名称>
+   ```
+   或者使用 PAT 直接发布：
+   ```bash
+   vsce publish -p <你的Personal Access Token>
+   ```
+
+2. **发布扩展**
+   ```bash
+   vsce publish
+   ```
+   这将自动：
+   - 运行 `vscode:prepublish` 脚本编译代码
+   - 验证扩展配置
+   - 上传到扩展市场
+
+3. **更新扩展**
+   - 修改 `package.json` 中的 `version` 字段（必须递增）
+   - 再次运行 `vsce publish`
+
+### 注意事项
+
+- 版本号必须遵循语义化版本（如 0.0.1 → 0.0.2）
+- 确保扩展已充分测试
+- README.md 会显示在扩展商店页面
+- 首次发布后，扩展会在几分钟内出现在商店中
+
 ## 开发提示
 
 - 修改代码后，需要重新编译（`npm run compile`）

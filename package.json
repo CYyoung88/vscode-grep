@@ -1,8 +1,22 @@
 {
   "name": "vscode-grep",
   "displayName": "Grep Search",
-  "description": "A VS Code extension for grep-like search functionality",
+  "description": "A VS Code extension that provides grep-like search functionality. Search within the currently active file using grep patterns and parameters.",
   "version": "0.0.1",
+  "publisher": "CYYoung88",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CYyoung88/vscode-grep.git"
+  },
+  "icon": "icon.png",
+  "keywords": [
+    "grep",
+    "search",
+    "find",
+    "pattern",
+    "regex"
+  ],
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -41,12 +55,13 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "compile": "npx tsc -p ./",
+    "watch": "npx tsc -watch -p ./"
   },
   "devDependencies": {
-    "@types/vscode": "^1.74.0",
     "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "sharp": "^0.34.5",
     "typescript": "^4.9.4"
   }
 }
