@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Grep Result",
+  "patterns": [
+    {
+      "name": "markup.heading.match-line",
+      "match": "^>>>[^:]+:",
+      "captures": {
+        "0": {
+          "name": "punctuation.definition.match-line.grep"
+        }
+      }
+    },
+    {
+      "name": "markup.heading.context-line",
+      "match": "^   [^:]+:",
+      "captures": {
+        "0": {
+          "name": "punctuation.definition.context-line.grep"
+        }
+      }
+    },
+    {
+      "name": "entity.name.filename.grep",
+      "match": "^[^:]+",
+      "captures": {
+        "0": {
+          "name": "entity.name.filename.grep"
+        }
+      }
+    },
+    {
+      "name": "constant.numeric.line-number.grep",
+      "match": ":\\d+:",
+      "captures": {
+        "0": {
+          "name": "constant.numeric.line-number.grep"
+        }
+      }
+    },
+    {
+      "name": "punctuation.separator.block.grep",
+      "match": "^---$",
+      "captures": {
+        "0": {
+          "name": "punctuation.separator.block.grep"
+        }
+      }
+    }
+  ],
+  "scopeName": "text.grep.result",
+  "repository": {},
+  "uuid": "grep-result-language"
+}
